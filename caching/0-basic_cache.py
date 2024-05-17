@@ -1,21 +1,27 @@
 #!/usr/bin/python3
-""" 
-    BaseCache module 
-
+"""
+    BaseCache module
 """
 
 from base_caching import BaseCaching
 
+
 class BasicCache(BaseCaching):
-    """ 
-        BasicCache defines a intro to use cache
+    """ BasicCache define a intro to use cache
 
       To use:
       >>> my_cache = BasicCache()
       >>> my_cache.print_cache()
       Current cache:
 
+      >>> my_cache.put("A", "Hello")
+      >>> my_cache.print_cache()
+      A: Hello
+
+      >>> print(my_cache.get("A"))
+      Hello
     """
+
     def put(self, key, item):
         """
             modify cache data
@@ -35,7 +41,7 @@ class BasicCache(BaseCaching):
                 key: of the dict
 
             Return:
-                value
+                value of the key
         """
 
         valuecache = self.cache_data.get(key)
