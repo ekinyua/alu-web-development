@@ -25,7 +25,6 @@ class LIFOCache(BaseCaching):
                 print('DISCARD: {}'.format(delete))
             self.stack.append(key)
             self.cache_data[key] = item
-                
 
     def get(self, key):
         """Return value linked to the key"""
