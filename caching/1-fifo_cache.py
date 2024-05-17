@@ -8,36 +8,12 @@ from base_caching import BaseCaching
 
 class FIFOCache(BaseCaching):
     """ 
-        Defines a FIFO algorithm
-
-      To use:
-      >>> my_cache = BasicCache()
-      >>> my_cache.print_cache()
-      Current cache:
-
-      >>> my_cache.put("A", "Hello")
-      >>> my_cache.print_cache()
-      A: Hello
-
-      >>> print(my_cache.get("A"))
-      Hello
-
-      Ex:
-      >>> print(self.cache_data)
-      {A: "Hello", B: "World", C: "Holberton", D: "School"}
-      >>> my_cache.put("C", "Street")
-      >>> print(self.cache_data)
-      {A: "Hello", B: "World", C: "Street", D: "School"}
-
-      >>> my_cache.put("F", "COD")
-      DISCARD: A
-      >>> print(self.cache_data)
-      {F: "COD", B: "World", C: "Holberton", D: "School"}
+        Defines a FIFO algorithm to use cache
     """
 
     def __init__(self):
-        """ Initiliaze
-        """
+        """ Initiliaze"""
+        self.queue = []
         super().__init__()
 
     def put(self, key, item):
