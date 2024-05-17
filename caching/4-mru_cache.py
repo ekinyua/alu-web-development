@@ -25,7 +25,7 @@ class MRUCache(BaseCaching):
                 print('DISCARD: {}'.format(delete))
             self.stack.append(key)
             self.cache_data[key] = item
-   
+
     def get(self, key):
         """return value associated with key"""
         if self.cache_data.get(key):
