@@ -41,33 +41,17 @@ class FIFOCache(BaseCaching):
         super().__init__()
 
     def put(self, key, item):
-        """
-            modify cache data
-
-            Args:
-                key: of the dict
-                item: value of the key
-        """
-        if key or item is not None:
-            valuecache = self.get(key)
-            if valuecache is None:
-                if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                    keydel = list(self.cache_data.keys())[0]
-                    del self.cache_data[keydel]
-                    print("DISCARD: {}".format(keydel))
-
+        """Assigning item value to the dict"""
+        if key and item:
+            if self.cache_data.get(key):
+                self.queue.remove(key)
+            self.queue.append(key)
             self.cache_data[key] = item
+            if len(self.queue) > self.MAX_ITEMS:
+                delete = self.queue.pop(0)
+                self.cache_data.pop(delete)
+                print("DISCARD: {}".format(delete))
 
     def get(self, key):
-        """
-            modify cache data
-
-            Args:
-                key: of the dict
-
-            Return:
-                value of the key
-        """
-
-        valuecache = self.cache_data.get(key)
-        return valuecache
+        """Output the value linked to the key"""
+        return self.cache_data.get(key)
