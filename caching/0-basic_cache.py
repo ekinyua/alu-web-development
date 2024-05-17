@@ -18,10 +18,12 @@ class BasicCache(BaseCaching):
                 item: value of the key
         """
         if key is None or item is None:
-            self.cache_data[key] = item
+            return
+        self.cache_data[key] = item
 
     def get(self, key):
         """Retrieve values from cache"""
-
+        if key is None or key not in self.cache_data:
+            return None
         valuecache = self.cache_data.get(key)
         return valuecache
