@@ -28,9 +28,7 @@ class MRUCache(BaseCaching):
             
     def get(self, key):
         """return value associated with key"""
-        valuecache = self.cache_data.get(key)
-
-        if valuecache:
-            self.queue.remove(key)
-            self.queue.append(key)
-        return valuecache
+        if self.cache_data.get(key):
+            self.stack.remove(key)
+            self.stack.append(key)
+        return self.cache_data.get(key)
