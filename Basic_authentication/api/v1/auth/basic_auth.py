@@ -1,5 +1,7 @@
+
 #!/usr/bin/env python3
-"""Basic authentication"""
+""" Module of Basic Authentication
+"""
 from api.v1.auth.auth import Auth
 from base64 import b64decode
 from models.user import User
@@ -7,7 +9,7 @@ from typing import TypeVar
 
 
 class BasicAuth(Auth):
-    """Basic Auth class"""
+    """ Basic Authentication Class """
 
     def extract_base64_authorization_header(self,
                                             authorization_header: str) -> str:
@@ -27,12 +29,11 @@ class BasicAuth(Auth):
         return encoded
 
     def decode_base64_authorization_header(self,
-                                           authorization_header: str) -> str:
-        """ Decode Base 64 Authorization Header """
-
+                                           base64_authorization_header: str
+                                           ) -> str:
+        """ Decodes the value of a base64 string """
         if base64_authorization_header is None:
             return None
-
         if not isinstance(base64_authorization_header, str):
             return None
 
@@ -40,7 +41,7 @@ class BasicAuth(Auth):
             encoded = base64_authorization_header.encode('utf-8')
             decoded64 = b64decode(encoded)
             decoded = decoded64.decode('utf-8')
-        except Exception:
+        except BaseException:
             return None
 
         return decoded
