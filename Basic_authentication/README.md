@@ -1,1 +1,1 @@
-## Basic Authentication project
+## Authentication
