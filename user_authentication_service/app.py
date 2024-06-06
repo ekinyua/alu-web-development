@@ -49,7 +49,7 @@ def login():
     return response
 
 
-@app.route('/sessions', methods=['DELETE'], strict_slashes=False)
+@app.route('/sessions', methods=['DELETE'])
 def logout():
     """logout
     """
