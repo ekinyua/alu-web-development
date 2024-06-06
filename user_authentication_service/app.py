@@ -2,7 +2,7 @@
 """Route module for basic flask app API
 """
 
-from flask import Flask, jsonify, request, abort, redirect, make_response, url_for
+from flask import Flask, jsonify, request, abort, redirect, make_response
 from flask.helpers import make_response
 from auth import Auth
 
@@ -10,9 +10,11 @@ AUTH = Auth()
 
 app = Flask(__name__)
 
+app.url_map.strict_slashes = False
+
 
 @app.route('/')
-def welcome() -> str:
+def welcome():
     """GET
     """
     return jsonify({"message": "Bienvenue"})
@@ -56,7 +58,7 @@ def logout():
         user = AUTH.get_user_from_session_id(session_id)
         if user:
             AUTH.destroy_session(user.id)
-            return redirect(url_for('welcome'))
+            return redirect('/')
     abort(403)
 
 
