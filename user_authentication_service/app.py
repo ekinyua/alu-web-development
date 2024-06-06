@@ -11,7 +11,7 @@ AUTH = Auth()
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET'], strict_slashes=False)
+@app.route('/')
 def welcome() -> str:
     """GET
     """
