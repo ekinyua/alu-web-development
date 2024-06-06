@@ -2,10 +2,9 @@
 """Route module for basic flask app API
 """
 
-from flask import Flask, jsonify, request, abort, redirect, make_response
+from flask import Flask, jsonify, request, abort, redirect, make_response, url_for
 from flask.helpers import make_response
 from auth import Auth
-from flask import url_for
 
 AUTH = Auth()
 
