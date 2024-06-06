@@ -72,7 +72,7 @@ class Auth:
         """
         try:
             user = self._db.find_user_by(session_id=session_id)
-            return user.email
+            return user
         except NoResultFound:
             return None
 
